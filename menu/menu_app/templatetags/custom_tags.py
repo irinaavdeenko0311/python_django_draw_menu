@@ -50,11 +50,7 @@ class Menu:
             return
 
     def get_full_menu_tree(self, menu_name: str) -> None:
-        """
-        Метод для получения полного дерева меню из данных БД.
-
-        Дерево добавляется в словарь для хранения во избежание повторных запросов в БД.
-        """
+        """ Метод для получения полного дерева меню из данных БД. """
 
         queryset: QuerySet = MenuItem.objects.filter(menu__name=menu_name).all()
         if queryset:
