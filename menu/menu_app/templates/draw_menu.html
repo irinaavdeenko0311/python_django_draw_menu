@@ -1,0 +1,19 @@
+<ul>
+    <li>
+        {% if menu.value.url == active_link %}
+            <button style="border-color: red; border-radius: 4px;">
+                <a href="{{ menu.value.url }}">{{ menu.value }}</a>
+            </button>
+        {% else %}
+            <button>
+                <a href="{{ menu.value.url }}">{{ menu.value }}</a>
+            </button>
+        {% endif %}
+
+        <ul>
+            {% for child in menu.children %}
+                {% include "draw_menu.html" with menu=child %}
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

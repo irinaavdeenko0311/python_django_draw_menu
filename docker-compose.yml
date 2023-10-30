@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+
+  menu:
+    build: .
+    container_name: "menu"
+    env_file:
+      - .env
+    volumes:
+      - ./menu:/usr/share/menu
+    command: bash -c "python manage.py migrate && python manage.py create_superuser && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    restart: always
